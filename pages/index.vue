@@ -99,7 +99,7 @@ export default {
 
 <style>
 
-body {
+.scroll-container {
   perspective: 1px;
   /* To prevent elements from disappearing */
 }
