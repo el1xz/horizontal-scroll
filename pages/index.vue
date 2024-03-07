@@ -1,8 +1,11 @@
 <template>
-  <LocomotiveScroll ref="scroller" class="scroll-container" :getted-options="{ smooth: true }" @init="locomotive = $refs.scroller.locomotive">
+  <LocomotiveScroll ref="scroller" class="scroll-container" :getted-options="{ smooth: true, lerp: 0.05 }" @init="locomotive = $refs.scroller.locomotive">
     <div>
     <section data-bgcolor="#bcb8ad" data-textcolor="#032f35">
       <div>
+        <a href="#fixed-elements" data-scroll-to>
+          Go bottom
+        </a>
         <h1 data-scroll data-scroll-speed="1"><span>Horizontal</span> <span>scroll</span> <span>section</span></h1>
         <p data-scroll data-scroll-speed="2" data-scroll-delay="0.2">with GSAP ScrollTrigger & Locomotive Scroll</p>
       </div>
@@ -17,7 +20,7 @@
 
       </div>
     </section>
-    <section data-bgcolor="#e3857a" data-textcolor="#f1dba7"><img src="https://images.unsplash.com/photo-1709603945846-6901ed447ecd?q=80&w=2129&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+    <section id="fixed-elements" data-scroll-target="#fixed-elements" data-bgcolor="#e3857a" data-textcolor="#f1dba7">
       <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://codepen.io/cameronknight/pen/qBNvrRQ" target="_blank">Horizontal Effect by Advantage</a></h2>
       <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://github.com/DidoMarchet/starter-kit-nuxt-locomotive-scroll" target="_blank">Locomotive setup by DidoMarchet</a></h2>
       <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://github.com/el1xz" target="_blank">Edit by el1xz</a></h2>
@@ -81,7 +84,7 @@ export default {
           scroller: this.$refs.scroller.locomotive.el,
           scrub: true,
           pin: true,
-          start: 'top top',
+          start: 'center center',
           end: pinWrapWidth,
         },
         x: -horizontalScrollLength,
@@ -95,6 +98,12 @@ export default {
 </script>
 
 <style>
+
+body {
+  perspective: 1px;
+  /* To prevent elements from disappearing */
+}
+
 :root {
   --text-color: #111;
   --bg-color: #b9b3a9;
@@ -124,7 +133,7 @@ section:not(#sectionPin) {
 }
 
 img {
-  height: 80vh;
+  height: 50%;
   width: auto;
   object-fit: cover;
 }
@@ -167,7 +176,7 @@ h2 {
 }
 
 #sectionPin {
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   display: flex;
   left: 0;
@@ -176,15 +185,16 @@ h2 {
 }
 
 .pin-wrap {
-  height: 100vh;
+  height: 80vh;
   display: flex;
+  gap: 1rem;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px 10vw;
+  /* padding: 50px 10vw; */
 
   & > * {
     min-width: 60vw;
-    padding: 0 5vw;
+    /* padding: 0 5vw; */
   }
 }
 
