@@ -1,4 +1,4 @@
-# asg-dolina
+# Nuxt 2 Horizontall Scroll
 
 ## Build Setup
 
